@@ -94,7 +94,7 @@ $$ t = {{\hat{\beta}_1 - 0}\over{SE(\hat{\beta}_1)}} $$
 ## assessing the coefficients
 ### statsmodel
 
- _output from stats model table_
+![inline](simple-regression-output.png)
 
 ---
 
@@ -129,7 +129,49 @@ $$ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \epsilon $$
 
 ## estimating the coefficients
 
+### coefficients value
 
+$$ Y = \begin{bmatrix}
+   y_1 \\
+   y_2 \\
+    \vdots \\
+    y_n
+\end{bmatrix}
+X = \begin{bmatrix}
+1 & x_{11} & x_{12} & \cdots & x_{1p} \\
+1 & x_{21} & x_{22} & \cdots & x_{2p} \\
+1 & x_{i1} & x_{i2} & \cdots & x_{ip} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x_{n1} & x_{n2} & \cdots & x_{np} \\
+\end{bmatrix}
+$$
+
+$$ 
+\begin{align}
+\hat{\beta} &= \begin{bmatrix}
+       \hat{\beta}_0 \\
+       \hat{\beta}_1 \\
+       \vdots \\
+       \hat{\beta}_p
+\end{bmatrix}
+\end{align} =
+ (X'X)^{-1}X'Y $$
+
+---
+
+## estimating the coefficients
+
+### coefficients error
+
+$$SE(\hat{\beta})^2 = \sigma^2 (X' X)^ {-1}$$
+
+$$\hat{\sigma}^2 = \frac{e'e}{n-p} $$
+
+---
+## assessing the coefficients and model
+### statsmodel
+
+![inline](multiple-regression-outpu.png)
 
 ---
 
@@ -144,23 +186,17 @@ $$ F = {{(TSS - RSS) / p}\over{RSS / (n - p - 1)}} $$
 ## questions
 ### Model selection
 #### forward selection
-
----
-
-## questions
-### Model selection
 #### backward selection
-
----
-
-## questions
-### Model selection
 #### mixed selection
 
 ---
 
 ## questions
 ### model fit
+
+$$R^2$$
+
+$$RSE$$
 
 ---
 ## questions
@@ -179,50 +215,113 @@ $$ \hat{y}_0 \pm t_{0.975,n-2} \cdot SE(\hat{y}_0) $$
 ## qualitative predictors
 ### binary
 
+$$
+x_{i2}=\begin{cases}
+1 \text{ has some characteristic}\\
+0 \text{ doesn't have that characteristic}
+\end{cases}
+$$
+
+
+$$ y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \epsilon_i $$
+
+$$
+y_i=\begin{cases}
+\beta_0 + \beta_1 x_{i1} + \beta_2 + \epsilon & \text{if the ith sample is positive}\\
+\beta_0 + \beta_1 x_{i1} + \epsilon_i  & \text{if the ith sample is not positive}
+\end{cases}
+$$
+
 ---
 
 ## qualitative predictors
 ### multiple
+
+
+$$
+x_{i2}=\begin{cases}
+1 \text{ if A}\\
+0 \text{ if not A}
+\end{cases}
+$$
+
+$$
+x_{i3}=\begin{cases}
+1 \text{ if B}\\
+0 \text{ if not B}
+\end{cases}
+$$
+
+$$y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} + \epsilon_i$$
+
+$$
+y_i= \begin{cases}
+\beta_0 + \beta_1 x_{i1} + \beta_2 + \epsilon & \text{if A}\\
+\beta_0 + \beta_1 x_{i1} + \beta_3 + \epsilon_i  & \text{if B}\\
+\beta_0 + \beta_1 x_{i1} + \epsilon_i  & \text{if C}
+\end{cases}
+$$
+
 
 ---
 
 ## extensions
 ### removing additive assumption
 
+$$ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 X_1 X_2 + \epsilon$$
+
+$$ Y = \beta_0 + (\beta_1 + \beta_3 X_2) X_1 + \beta_2 X_2  + \epsilon $$
+
+$$ Y = \beta_0 + \beta_1 X_1 + (\beta_2  + \beta_3 X_1)X_2  + \epsilon $$
+
+---
+
+## extensions
+### removing additive assumption
+![inline](variable-interaction.png)
+
 ---
 
 ## extensions
 ### non-linear relationships
+![inline](quadratic.png)
 
 ---
 
 ## potential problems
 ### non-linearity of the response-predictor relationships
+![inline](no-linear-relation.png)
 
 ---
 
 ## potential problems
 ### correlation of the error terms
+![inline](autocorrelation.png)
 
 ---
 
 ## potential problems
 ### non-constant variance of error terms
+![inline](heterocedasticity.png)
 
 ---
 
 ## potential problems
 ### outliers
+![inline](outliers.png)
 
 ---
 
 ## potential problems
 ### high-leverage points
+![inline](high-leverage.png)
 
 ---
 
 ## potential problems
 ### collinearity
+![inline](colinearity.png)
 
 ---
 
+# that's it
